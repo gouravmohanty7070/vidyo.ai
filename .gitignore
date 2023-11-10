@@ -1,0 +1,30 @@
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Django
+settings_local.py
+local_settings.py
+production_settings.py
+db.sqlite3
+media/
+static/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Node.js
+node_modules/
