@@ -43,7 +43,7 @@ class WatermarkVideoView(views.APIView):
 
         # Overlay watermark on video
         final_clip = CompositeVideoClip([video_clip, watermark_clip])
-        output_path = f"{settings.MEDIA_ROOT}/watermarked/{video_file.name}"
+        output_path = f"/Users/gouravmohanty/Desktop/{video_file.name}"
         final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
 
         # Save video info to DB
