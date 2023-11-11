@@ -47,6 +47,38 @@ venv\Scripts\activate
 ```
 source venv/bin/activate
 ```
+Install FFmpeg
+- On Windows:
+```
+Download FFmpeg:
+
+Go to the FFmpeg Official Website and download the latest build for Windows.
+Extract the Files:
+
+Extract the downloaded ZIP file to a location on your computer (e.g., C:\FFmpeg).
+Add FFmpeg to the System Path:
+
+Right-click on 'This PC' or 'My Computer' and select 'Properties'.
+Click on 'Advanced system settings' and then 'Environment Variables'.
+Under 'System Variables', find and select the 'Path' variable, then click 'Edit'.
+Click 'New' and add the path to the bin folder inside the extracted FFmpeg folder (e.g., C:\FFmpeg\bin).
+Click 'OK' to close all dialog boxes.
+Verify the Installation:
+
+Open Command Prompt and type ffmpeg -version to check if FFmpeg is installed correctly.
+```
+
+- On macOS:
+
+```
+brew install ffmpeg
+```
+
+- On Linux:
+
+```
+sudo apt install ffmpeg
+```
 
 Install Dependencies
 With the virtual environment activated, install the required dependencies using pip and the requirements.txt file:
