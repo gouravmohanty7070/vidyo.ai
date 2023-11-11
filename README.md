@@ -10,6 +10,7 @@ Contents
 * [Installation](#installation)
 * [Database Schema Description](#database-schema-description)
 * [Efficient Architecture Design](efficient-architecture-design)
+* [Demo Vidyo](demo-vidyo)
 
 
 
