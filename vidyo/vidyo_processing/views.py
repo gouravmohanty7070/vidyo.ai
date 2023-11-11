@@ -18,7 +18,12 @@ class ExtractAudioView(views.APIView):
         subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         
 
-        video_info = Video(user=request.user.username if request.user.is_authenticated else 'Anonymous')
+        video_info = Video(
+            user=request.user.username if request.user.is_authenticated else 'Anonymous',
+            processing_type='audio_extraction',
+            original_video_name=video_file.name,
+            processed_video_name=output_filename
+        )
         video_info.save()
 
         return Response(VideoSerializer(video_info).data, status=status.HTTP_200_OK)
@@ -43,7 +48,14 @@ class WatermarkVideoView(views.APIView):
         subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         # Save video info to DB
-        video_info = Video(user=request.user.username, watermark_image=watermark_image)
+        video_info = Video(
+            user=request.user.username,
+            processing_type='watermarking',
+            original_video_name=video_file.name,
+            processed_video_name=output_filename,
+            watermark_image=watermark_image.name,
+            watermark_position=position
+        )
         video_info.save()
 
         return Response(VideoSerializer(video_info).data, status=status.HTTP_200_OK)      
