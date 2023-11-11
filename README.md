@@ -1,6 +1,6 @@
 ![Capture](https://be.farazdev.com/wp-content/uploads/2023/10/vidyo-ai-1024x576.png)
 
-# Video Processing Service - vidyo.ai
+# Vidyo Processing Service - vidyo.ai
 ---
 
 Contents
@@ -9,6 +9,7 @@ Contents
 * [Overview](#overview)
 * [Installation](#installation)
 * [Database Schema Description](#database-schema-description)
+* [Efficient Architecture Design](efficient-architecture-design)
 
 
 
@@ -153,3 +154,25 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+### Efficient Architecture Design 
+---
+
+![Capture](https://res.cloudinary.com/divr26z8e/image/upload/v1699696290/Efficient_Architecture_for_Video_Processing_Service_xqrqkj.png)
+
+<ul>
+  <li>Load Balancer : This will be the entry point for incoming video processing requests. It distributes the load evenly across multiple servers in the service cluster, ensuring no single server is overwhelmed.</li>
+  <li>Video Processing Service Cluster: A cluster of servers that handle the actual video processing tasks. This cluster can be scaled horizontally to increase capacity.</li>
+  <li>Resource Allocation Manager: This component dynamically allocates tasks to different queues based on the nature of the task (CPU or memory intensive).</li>
+  <li>CPU Intensive Task Queue & Memory Intensive Task Queue: Separate queues for tasks that are CPU intensive and those that are memory intensive. This separation allows for more efficient processing.</li>
+  <li>CPU Optimized Servers & Memory Optimized Servers: Dedicated servers optimized for either CPU or memory intensive tasks. This ensures that each task is handled by a server that is best suited for its requirements.</li>
+  <li>Database for Processed Videos: After processing, the videos are stored in a database. This could be a cloud-based storage solution for scalability and ease of access.</li>
+  <li>Cache Layer: A caching mechanism to quickly serve frequent requests, reducing the load on the processing servers and the database.</li>
+  <li>Client Response: The final processed video or relevant data is sent back to the client.</li>
+</ul>
+
+This architecture is designed to optimize resource usage and maintain responsiveness under high load. By separating tasks based on their resource requirements and using a mix of optimized servers, the system can handle a large number of concurrent video processing requests efficiently.
+
+### Demo Vidyo
+---
+
+[vidyo.ai assignement demo video](https://drive.google.com/file/d/1PnR9k0gLxZD28Btysv_tVGGp8q_NdUVK/view?usp=sharing)
